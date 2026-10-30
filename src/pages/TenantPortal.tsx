@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageContainer } from "@/components/shared/PageContainer";
 import { PropertyCard } from "@/components/shared/PropertyCard";
+import { LegalChecklist } from "@/components/shared/LegalChecklist";
 import { useFavorites } from "@/hooks/useFavorites";
 import { getPropertyById } from "@/data/mock-properties";
 
@@ -116,6 +117,10 @@ export default function TenantPortal() {
               </Button>
             </CardContent>
           </Card>
+        </div>
+
+        <div className="mb-10">
+          <LegalChecklist />
         </div>
 
         <div className="text-center pt-8 border-t">
