@@ -1,60 +1,50 @@
-# HomeHop — Modern Rental Marketplace
+# HomeHop — Modern Rental Marketplace for Mumbai
 
 > **"Find your space. Feel at home."**
 
-HomeHop is a modern proptech rental marketplace connecting tenants, property owners, and brokers to help people discover affordable rooms, PGs, flats, and rental homes across urban centers.
+HomeHop is a modern proptech rental marketplace connecting tenants, property owners, and brokers across Mumbai to help people find affordable 1 RKs, 1 BHKs, 2 BHKs, 3 BHKs, PGs, and rental rooms with radical upfront cost transparency.
 
 ---
 
-## Features
+## Key Features (Phase 1 & Phase 2)
 
-- **Multi-Criteria Property Search**: Search by city, locality, property type, and monthly budget.
-- **Dynamic Property Categorization**: Instant filter chips for Rooms, PG / Co-living, Flats, and Independent Houses.
-- **Live URL-Driven Filtering**: Search parameters propagate via URL query parameters, preserving state across sessions.
-- **Rich Listing Details**: Comprehensive property overview with photo galleries, key stats, amenities list, and direct owner contact actions.
-- **Interactive Tenant & Owner Dashboard**: Overview metrics, listing management actions, and tenant exploration shortcuts.
-- **Client Form Validation**: Accessible sign-in placeholder with client-side credential validation.
-- **Responsive & Accessible Design**: Mobile-friendly navigation drawer, WCAG-compliant color contrast, keyboard navigable, and graceful image error handling.
+- **Total Upfront Outlay Calculator**: Every listing computes and breaks down 1st month's rent, security deposit, and exact brokerage, leaving zero surprises.
+- **Transit-Centric Search**: Search by Mumbai localities (Andheri, Powai, Thane, Bandra, Borivali, etc.) and proximity to suburban railway or metro stations.
+- **WhatsApp Direct Inquiries**: Click-to-chat button with prefilled listing reference IDs (e.g. `HH-1001`) for instantaneous owner/agent contact.
+- **Accompanied Visit Requests**: Validated schedule visit workflow with date picker and time slots (Morning, Afternoon, Evening).
+- **Interactive Multi-Filter Marketplace**: Locality, station, rent range, configuration, furnishing status, and amenities filters synced to URL search parameters.
+- **Dual Grid/List View**: Toggle between card visual view and detailed row overview with upfront pricing comparison.
+- **Sample Listing Quality Disclosures**: Clear "Sample Listing - Non-verified" indicators and last availability confirmation dates.
+- **Portal Ecosystem Previews**: Dedicated placeholder routes for Tenant Portal, Owner Portal, Broker Operations, and Admin Backoffice.
 
 ---
 
 ## Tech Stack
 
-- **Framework**: [React 19](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
-- **Bundler & Dev Server**: [Vite 8](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) with CSS-first `@theme` design tokens
-- **Routing**: [React Router v7](https://reactrouter.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **UI Architecture**: shadcn/ui design patterns with [Class Variance Authority (CVA)](https://cva.style/)
-- **Linter**: [Oxlint](https://oxc.rs/)
+- **Framework**: React 19
+- **Language**: TypeScript (Strict Mode)
+- **Bundler & Dev Server**: Vite 8
+- **Styling**: Tailwind CSS v4 with CSS-first `@theme` design tokens
+- **Routing**: React Router v7 with maintainable route hierarchy
+- **Icons**: Lucide React
+- **UI Architecture**: shadcn/ui design patterns with Class Variance Authority (CVA)
+- **Linter**: Oxlint
 
 ---
 
-## Project Structure
+## Routes
 
-```
-homehop/
-├── public/                 # Static assets & SVG icons
-├── src/
-│   ├── app/                # Application entry & router configuration
-│   │   ├── App.tsx
-│   │   └── routes.tsx
-│   ├── components/
-│   │   ├── layout/         # Header, Footer, Layout wrapper
-│   │   ├── shared/         # Reusable feature components
-│   │   └── ui/             # Core UI primitives (Button, Card, Input, etc.)
-│   ├── lib/                # Shared utilities & class merge helpers
-│   ├── pages/              # Route page components
-│   ├── services/           # Mock data and query filter services
-│   ├── types/              # TypeScript interface definitions
-│   ├── index.css           # Tailwind v4 theme configuration
-│   └── main.tsx            # DOM root mounting
-├── components.json         # shadcn/ui configuration
-├── tsconfig.app.json       # Strict TypeScript client compiler settings
-├── tsconfig.node.json      # Vite Node build compiler settings
-└── vite.config.ts          # Vite build & alias plugin setup
-```
+- `/` — Homepage (hero search, categories, featured rentals, how it works, trust benefits, owner CTA)
+- `/explore` — Search & Filter Marketplace with live URL sync and grid/list view
+- `/property/:id` — Property Details with upfront cost breakdown, WhatsApp button, visit scheduler, enquiry form
+- `/about` — About HomeHop (mission for Mumbai rental transparency)
+- `/contact` — Contact page with WhatsApp direct link and message form
+- `/tenant` — Tenant Portal placeholder
+- `/owner` — Property Owner Portal placeholder
+- `/broker` — Broker Operations Portal placeholder
+- `/admin` — Admin Backoffice Portal placeholder
+- `/login` — Sign In prototype
+- `/dashboard` — Market Overview Dashboard
 
 ---
 
@@ -63,7 +53,7 @@ homehop/
 ### Prerequisites
 
 - Node.js (v20+ recommended)
-- npm or compatible package manager
+- npm
 
 ### Installation
 
@@ -73,21 +63,31 @@ cd homehop
 npm install
 ```
 
-### Running Locally
+### Environment Configuration
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+`VITE_WHATSAPP_NUMBER` defines the default WhatsApp number for direct inquiries.
+
+### Development Server
 
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:5173](http://localhost:5173) in your browser.
+Visit [http://localhost:5173](http://localhost:5173).
 
-### Building for Production
+### Production Build
 
 ```bash
 npm run build
 ```
 
-### Linting
+### Code Quality & Linting
 
 ```bash
 npm run lint
