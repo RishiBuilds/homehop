@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageContainer } from "@/components/shared/PageContainer";
 import { SampleBadge } from "@/components/shared/SampleBadge";
+import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PropertyCard } from "@/components/shared/PropertyCard";
 import { EnquiryForm } from "@/components/shared/EnquiryForm";
 import { ScheduleVisitForm } from "@/components/shared/ScheduleVisitForm";
@@ -69,6 +70,16 @@ export default function PropertyDetails() {
   return (
     <section className="py-8 sm:py-12 bg-background">
       <PageContainer>
+        <div className="mb-4">
+          <Breadcrumbs
+            items={[
+              { label: "Explore", href: "/explore" },
+              { label: property.locality, href: `/explore?locality=${encodeURIComponent(property.locality)}` },
+              { label: property.referenceId },
+            ]}
+          />
+        </div>
+
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
           <Link
             to="/explore"
