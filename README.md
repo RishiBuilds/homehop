@@ -9,12 +9,16 @@ HomeHop is a modern proptech rental marketplace connecting tenants, property own
 ## Key Features (Phase 1 & Phase 2)
 
 - **Total Upfront Outlay Calculator**: Every listing computes and breaks down 1st month's rent, security deposit, and exact brokerage, leaving zero surprises.
-- **Transit-Centric Search**: Search by Mumbai localities (Andheri, Powai, Thane, Bandra, Borivali, etc.) and proximity to suburban railway or metro stations.
+- **Rent Affordability Calculator**: Calculate your safe 30% take-home rent ceiling and estimated 2-month deposit savings target.
+- **Transit-Centric Search**: Search by Mumbai localities (Andheri, Powai, Thane, Bandra, Borivali, etc.) and proximity to Western, Central, and Harbour suburban train stations.
+- **Shortlist Bookmarks**: Save favorite listings with persistent browser storage, synchronized shortlist counter in the navigation bar, and dedicated Tenant Portal view.
 - **WhatsApp Direct Inquiries**: Click-to-chat button with prefilled listing reference IDs (e.g. `HH-1001`) for instantaneous owner/agent contact.
 - **Accompanied Visit Requests**: Validated schedule visit workflow with date picker and time slots (Morning, Afternoon, Evening).
 - **Interactive Multi-Filter Marketplace**: Locality, station, rent range, configuration, furnishing status, and amenities filters synced to URL search parameters.
 - **Dual Grid/List View**: Toggle between card visual view and detailed row overview with upfront pricing comparison.
+- **Quick Share & Link Copy**: One-click URL copying with visual feedback badge on property detail pages.
 - **Sample Listing Quality Disclosures**: Clear "Sample Listing - Non-verified" indicators and last availability confirmation dates.
+- **Keyboard Shortcuts**: Press `/` anywhere on the Explore marketplace to immediately focus the locality search bar.
 - **Portal Ecosystem Previews**: Dedicated placeholder routes for Tenant Portal, Owner Portal, Broker Operations, and Admin Backoffice.
 
 ---
@@ -35,12 +39,12 @@ HomeHop is a modern proptech rental marketplace connecting tenants, property own
 ## Routes
 
 - `/` — Homepage (hero search, categories, featured rentals, how it works, trust benefits, owner CTA)
-- `/explore` — Search & Filter Marketplace with live URL sync and grid/list view
-- `/property/:id` — Property Details with upfront cost breakdown, WhatsApp button, visit scheduler, enquiry form
-- `/about` — About HomeHop (mission for Mumbai rental transparency)
-- `/contact` — Contact page with WhatsApp direct link and message form
-- `/tenant` — Tenant Portal placeholder
-- `/owner` — Property Owner Portal placeholder
+- `/explore` — Search & Filter Marketplace with live URL sync, grid/list view, and affordability calculator
+- `/property/:id` — Property Details with upfront cost breakdown, WhatsApp button, visit scheduler, enquiry form, and breadcrumbs
+- `/about` — About HomeHop (mission for Mumbai rental transparency & tenancy FAQ)
+- `/contact` — Contact page with direct WhatsApp link, phone, and inquiry form
+- `/tenant` — Tenant Portal with real-time saved shortlist bookmarks
+- `/owner` — Property Owner Portal placeholder with listing draft creator
 - `/broker` — Broker Operations Portal placeholder
 - `/admin` — Admin Backoffice Portal placeholder
 - `/login` — Sign In prototype
