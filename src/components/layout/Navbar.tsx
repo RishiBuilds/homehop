@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Home, Menu, X, Plus, ShieldAlert, ChevronDown } from "lucide-react";
+import { Home, Menu, X, Plus, ShieldAlert, ChevronDown, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useFavorites } from "@/hooks/useFavorites";
 import { cn } from "@/lib/utils";
 
 const primaryNav = [
@@ -21,6 +22,7 @@ const portalLinks = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [portalsOpen, setPortalsOpen] = useState(false);
+  const { favoritesCount } = useFavorites();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/85">
@@ -94,6 +96,19 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex md:items-center md:gap-3">
+          <Link
+            to="/tenant"
+            className="relative p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-accent/60 transition-colors"
+            title="Shortlisted Properties"
+            aria-label="Shortlisted Properties"
+          >
+            <Heart className={`h-5 w-5 ${favoritesCount > 0 ? "text-rose-600 fill-rose-600" : ""}`} />
+            {favoritesCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-rose-600 text-[10px] font-bold text-white">
+                {favoritesCount}
+              </span>
+            )}
+          </Link>
           <Link to="/owner">
             <Button variant="outline" size="sm" className="gap-1.5">
               <Plus className="h-4 w-4" />
