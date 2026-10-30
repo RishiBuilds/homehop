@@ -90,3 +90,4 @@ export function ApproximateMiniMap({ property }: ApproximateMiniMapProps) {
     </div>
   );
 }
+
