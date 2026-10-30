@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { MapPin, BedDouble, Bath, Maximize, Calendar, ArrowRight } from "lucide-react";
+import { MapPin, BedDouble, Bath, Maximize, Calendar, ArrowRight, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SampleBadge } from "./SampleBadge";
 import { TransitDistanceBadge } from "./TransitDistanceBadge";
+import { useFavorites } from "@/hooks/useFavorites";
 import type { Property } from "@/types";
 import { PROPERTY_TYPE_LABELS, AVAILABILITY_LABELS } from "@/types";
 import { formatCurrency, computeUpfrontCost } from "@/lib/utils";
@@ -14,6 +15,8 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const favorite = isFavorite(property.id);
   const upfrontCost = computeUpfrontCost(property.rent, property.deposit, property.brokerage);
 
   if (viewMode === "list") {
@@ -30,6 +33,22 @@ export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps)
                 <Badge variant="accent">{PROPERTY_TYPE_LABELS[property.type] ?? property.type}</Badge>
                 <SampleBadge />
               </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleFavorite(property.id);
+                }}
+                className={`absolute top-2.5 right-2.5 p-1.5 rounded-full backdrop-blur transition-colors ${
+                  favorite
+                    ? "bg-rose-50 text-rose-600 hover:bg-rose-100"
+                    : "bg-card/80 text-muted-foreground hover:text-foreground hover:bg-card"
+                }`}
+                aria-label={favorite ? "Remove from favorites" : "Save to favorites"}
+              >
+                <Heart className={`h-4 w-4 ${favorite ? "fill-rose-600" : ""}`} />
+              </button>
             </div>
 
             <CardContent className="p-5 flex-1 flex flex-col justify-between">
@@ -114,10 +133,26 @@ export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps)
               <Badge variant="accent">{PROPERTY_TYPE_LABELS[property.type] ?? property.type}</Badge>
               <SampleBadge />
             </div>
-            <div className="absolute top-3 right-3">
+            <div className="absolute top-3 right-3 flex items-center gap-1.5">
               <Badge variant="secondary" className="text-xs capitalize bg-card/90 backdrop-blur">
                 {AVAILABILITY_LABELS[property.availability]}
               </Badge>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleFavorite(property.id);
+                }}
+                className={`p-1.5 rounded-full backdrop-blur transition-colors ${
+                  favorite
+                    ? "bg-rose-50 text-rose-600 hover:bg-rose-100"
+                    : "bg-card/90 text-muted-foreground hover:text-foreground hover:bg-card"
+                }`}
+                aria-label={favorite ? "Remove from favorites" : "Save to favorites"}
+              >
+                <Heart className={`h-3.5 w-3.5 ${favorite ? "fill-rose-600" : ""}`} />
+              </button>
             </div>
           </div>
 
