@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Calculator, Sparkles, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calculator, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/lib/utils";
