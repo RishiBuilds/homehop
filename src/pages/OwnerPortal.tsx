@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { PageContainer } from "@/components/shared/PageContainer";
+import { RentalYieldCalculator } from "@/components/shared/RentalYieldCalculator";
 
 const propertyTypes = [
   { value: "1rk", label: "1 RK" },
@@ -161,6 +162,7 @@ export default function OwnerPortal() {
           </div>
 
           <div className="space-y-4">
+            <RentalYieldCalculator />
             <div className="rounded-2xl border bg-card p-5 shadow-xs">
               <h3 className="font-bold text-sm text-foreground mb-2 flex items-center gap-1.5">
                 <KeyRound className="h-4 w-4 text-primary" />
