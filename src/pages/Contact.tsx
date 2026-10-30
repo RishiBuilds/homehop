@@ -83,7 +83,9 @@ export default function Contact() {
                 </div>
                 <div>
                   <h2 className="font-semibold text-sm text-foreground">Email Support</h2>
-                  <p className="mt-1 text-xs text-muted-foreground">help@homehop.in</p>
+                  <a href="mailto:help@homehop.in" className="mt-1 text-xs text-primary font-medium hover:underline block">
+                    help@homehop.in
+                  </a>
                   <p className="text-[11px] text-muted-foreground mt-0.5">Response within 24 hours</p>
                 </div>
               </div>
