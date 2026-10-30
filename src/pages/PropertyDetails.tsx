@@ -14,6 +14,8 @@ import {
   Sparkles,
   CalendarCheck,
   Building,
+  Share2,
+  Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -36,6 +38,13 @@ export default function PropertyDetails() {
   const { id } = useParams<{ id: string }>();
   const property = id ? getPropertyById(id) : undefined;
   const [activeTab, setActiveTab] = useState<"whatsapp" | "visit" | "enquiry">("whatsapp");
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
 
   if (!property) {
     return (
@@ -97,6 +106,15 @@ export default function PropertyDetails() {
             <Badge variant="outline" className="text-xs capitalize">
               {AVAILABILITY_LABELS[property.availability]}
             </Badge>
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="inline-flex items-center gap-1 text-xs border rounded-md px-2.5 py-1 bg-card hover:bg-accent text-muted-foreground hover:text-foreground transition-colors"
+              title="Copy property link"
+            >
+              {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Share2 className="h-3.5 w-3.5" />}
+              <span>{copied ? "Link Copied" : "Share"}</span>
+            </button>
           </div>
         </div>
 
