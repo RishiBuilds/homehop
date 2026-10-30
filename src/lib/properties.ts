@@ -71,3 +71,4 @@ export function getInsights(results: Property[], maxBudget?: number): MarketInsi
     budgetPercentile,
   };
 }
+

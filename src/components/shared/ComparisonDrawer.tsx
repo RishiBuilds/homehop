@@ -151,3 +151,4 @@ export function ComparisonDrawer({ isOpen, onClose }: ComparisonDrawerProps) {
     </div>
   );
 }
+

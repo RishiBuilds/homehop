@@ -85,3 +85,4 @@ export function useComparison() {
     maxItems: MAX_COMPARISON_ITEMS,
   };
 }
+
