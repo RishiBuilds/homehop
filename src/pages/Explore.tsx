@@ -12,6 +12,7 @@ import { PageContainer } from "@/components/shared/PageContainer";
 import { PropertyCard } from "@/components/shared/PropertyCard";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { RentAffordabilityCalculator } from "@/components/shared/RentAffordabilityCalculator";
+import { LocalityPills } from "@/components/shared/LocalityPills";
 import { ComparisonDrawer } from "@/components/shared/ComparisonDrawer";
 import { useComparison } from "@/hooks/useComparison";
 import { Button } from "@/components/ui/button";
@@ -531,6 +532,14 @@ export default function Explore() {
 
             <div className="mt-12">
               <RentAffordabilityCalculator />
+            </div>
+
+            <div className="mt-8">
+              <div className="mb-4">
+                <h3 className="text-base font-bold text-foreground">Mumbai Transit Corridors</h3>
+                <p className="text-xs text-muted-foreground">Quickly filter rentals along Western, Central, and Harbour railway lines</p>
+              </div>
+              <LocalityPills />
             </div>
           </main>
         </div>
