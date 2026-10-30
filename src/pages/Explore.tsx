@@ -11,6 +11,7 @@ import {
 import { PageContainer } from "@/components/shared/PageContainer";
 import { PropertyCard } from "@/components/shared/PropertyCard";
 import { EmptyState } from "@/components/shared/EmptyState";
+import { RentAffordabilityCalculator } from "@/components/shared/RentAffordabilityCalculator";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -512,6 +513,10 @@ export default function Explore() {
                 onAction={clearAllFilters}
               />
             )}
+
+            <div className="mt-12">
+              <RentAffordabilityCalculator />
+            </div>
           </main>
         </div>
       </PageContainer>
