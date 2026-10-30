@@ -4,6 +4,7 @@ export {
   type FurnishingStatus,
   type AvailabilityStatus,
   type SearchFilters,
+  type MarketInsights,
   PROPERTY_TYPE_LABELS,
   FURNISHING_LABELS,
   AVAILABILITY_LABELS,

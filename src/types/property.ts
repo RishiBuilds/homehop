@@ -29,6 +29,8 @@ export interface Property {
   lastConfirmedDate: string;
   verified: false;
   postedDate: string;
+  lat: number;
+  lng: number;
 }
 
 export interface SearchFilters {
@@ -41,6 +43,16 @@ export interface SearchFilters {
   furnishing: FurnishingStatus | "";
   amenities: string[];
   sort: string;
+}
+
+export interface MarketInsights {
+  count: number;
+  totalCount: number;
+  avgRent: number;
+  minRent: number;
+  maxRent: number;
+  inBudgetCount: number;
+  budgetPercentile: number;
 }
 
 export const PROPERTY_TYPE_LABELS: Record<PropertyType, string> = {
