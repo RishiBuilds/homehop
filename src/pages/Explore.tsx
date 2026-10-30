@@ -12,6 +12,8 @@ import { PageContainer } from "@/components/shared/PageContainer";
 import { PropertyCard } from "@/components/shared/PropertyCard";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { RentAffordabilityCalculator } from "@/components/shared/RentAffordabilityCalculator";
+import { ComparisonDrawer } from "@/components/shared/ComparisonDrawer";
+import { useComparison } from "@/hooks/useComparison";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -55,6 +57,8 @@ export default function Explore() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showFiltersDrawer, setShowFiltersDrawer] = useState(false);
+  const [showCompare, setShowCompare] = useState(false);
+  const { comparisonCount, clearComparison } = useComparison();
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -531,6 +535,26 @@ export default function Explore() {
           </main>
         </div>
       </PageContainer>
+
+      {comparisonCount > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 rounded-full border border-primary/30 bg-card/95 backdrop-blur px-5 py-2.5 shadow-xl">
+          <span className="text-xs font-semibold text-foreground">
+            {comparisonCount} of 3 properties selected
+          </span>
+          <Button size="sm" onClick={() => setShowCompare(true)} className="h-7 text-xs px-3">
+            Compare Now
+          </Button>
+          <button
+            type="button"
+            onClick={clearComparison}
+            className="text-xs text-muted-foreground hover:text-foreground font-medium"
+          >
+            Clear
+          </button>
+        </div>
+      )}
+
+      <ComparisonDrawer isOpen={showCompare} onClose={() => setShowCompare(false)} />
     </section>
   );
 }
