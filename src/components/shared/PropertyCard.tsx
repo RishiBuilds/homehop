@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, BedDouble, Bath, Maximize, Calendar, ArrowRight, Heart } from "lucide-react";
+import { MapPin, BedDouble, Bath, Maximize, ArrowRight, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SampleBadge } from "./SampleBadge";
