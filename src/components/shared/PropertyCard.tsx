@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { MapPin, Train, BedDouble, Bath, Maximize, Calendar, ArrowRight } from "lucide-react";
+import { MapPin, BedDouble, Bath, Maximize, Calendar, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SampleBadge } from "./SampleBadge";
+import { TransitDistanceBadge } from "./TransitDistanceBadge";
 import type { Property } from "@/types";
 import { PROPERTY_TYPE_LABELS, AVAILABILITY_LABELS } from "@/types";
 import { formatCurrency, computeUpfrontCost } from "@/lib/utils";
@@ -59,10 +60,7 @@ export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps)
                     <MapPin className="h-3.5 w-3.5 text-primary shrink-0" />
                     <span>{property.locality}</span>
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Train className="h-3.5 w-3.5 text-primary shrink-0" />
-                    <span>Near {property.nearbyStation}</span>
-                  </span>
+                  <TransitDistanceBadge station={property.nearbyStation} />
                 </div>
 
                 <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
@@ -142,9 +140,8 @@ export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps)
               <span className="truncate">{property.locality}</span>
             </div>
 
-            <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
-              <Train className="h-3 w-3 text-primary shrink-0" />
-              <span className="truncate">Near {property.nearbyStation}</span>
+            <div className="mt-2">
+              <TransitDistanceBadge station={property.nearbyStation} />
             </div>
 
             <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
