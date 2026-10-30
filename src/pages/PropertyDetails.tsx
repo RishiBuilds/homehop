@@ -26,6 +26,8 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PropertyCard } from "@/components/shared/PropertyCard";
 import { EnquiryForm } from "@/components/shared/EnquiryForm";
 import { ScheduleVisitForm } from "@/components/shared/ScheduleVisitForm";
+import { ComparisonDrawer } from "@/components/shared/ComparisonDrawer";
+import { useComparison } from "@/hooks/useComparison";
 import { getPropertyById, getSimilarProperties } from "@/data/mock-properties";
 import {
   PROPERTY_TYPE_LABELS,
@@ -39,6 +41,8 @@ export default function PropertyDetails() {
   const property = id ? getPropertyById(id) : undefined;
   const [activeTab, setActiveTab] = useState<"whatsapp" | "visit" | "enquiry">("whatsapp");
   const [copied, setCopied] = useState(false);
+  const [showCompare, setShowCompare] = useState(false);
+  const { comparisonCount, clearComparison } = useComparison();
 
   function handleCopy() {
     navigator.clipboard.writeText(window.location.href);
@@ -413,6 +417,26 @@ export default function PropertyDetails() {
           </aside>
         </div>
       </PageContainer>
+
+      {comparisonCount > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 rounded-full border border-primary/30 bg-card/95 backdrop-blur px-5 py-2.5 shadow-xl">
+          <span className="text-xs font-semibold text-foreground">
+            {comparisonCount} of 3 properties selected
+          </span>
+          <Button size="sm" onClick={() => setShowCompare(true)} className="h-7 text-xs px-3">
+            Compare Now
+          </Button>
+          <button
+            type="button"
+            onClick={clearComparison}
+            className="text-xs text-muted-foreground hover:text-foreground font-medium"
+          >
+            Clear
+          </button>
+        </div>
+      )}
+
+      <ComparisonDrawer isOpen={showCompare} onClose={() => setShowCompare(false)} />
     </section>
   );
 }
