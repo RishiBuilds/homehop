@@ -73,6 +73,45 @@ export default function About() {
           </div>
         </div>
 
+        <div className="max-w-4xl mx-auto mb-16">
+          <h2 className="text-2xl font-bold text-foreground text-center mb-8">
+            Frequently Asked Mumbai Rental Questions
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="font-bold text-sm text-foreground">What is the standard security deposit in Mumbai?</h3>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                In suburban Mumbai (Andheri, Powai, Thane), deposits typically range from 2 to 3 months of rent. In South
+                Mumbai and Bandra, high-rises often request 4 to 6 months. HomeHop clearly discloses deposit figures upfront.
+              </p>
+            </div>
+
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="font-bold text-sm text-foreground">What is the brokerage fee standard?</h3>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                Standard Mumbai broker commission is 1 month rent for a 1-year agreement. HomeHop explicitly labels listings
+                as Zero Brokerage (direct owner) or displays the calculated fee so you know the exact total cost.
+              </p>
+            </div>
+
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="font-bold text-sm text-foreground">How does registration & stamp duty work?</h3>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                Maharashtra mandates registered leave-and-license agreements. Stamp duty is 0.25% of the total rent plus
+                deposit, plus a nominal registration fee of ₹1,000 for urban areas.
+              </p>
+            </div>
+
+            <div className="rounded-xl border bg-card p-5">
+              <h3 className="font-bold text-sm text-foreground">How often is listing availability re-confirmed?</h3>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                Our operations team verifies active status every 7 to 10 days. The "Last Confirmed" date tag on each listing
+                tells you exactly when the owner or broker affirmed the flat is still vacant.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="text-center max-w-xl mx-auto">
           <h2 className="text-xl font-bold text-foreground">Ready to find your next home?</h2>
           <p className="mt-2 text-xs text-muted-foreground">
