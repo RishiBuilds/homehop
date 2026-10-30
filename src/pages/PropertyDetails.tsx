@@ -26,6 +26,7 @@ import { Breadcrumbs } from "@/components/shared/Breadcrumbs";
 import { PropertyCard } from "@/components/shared/PropertyCard";
 import { EnquiryForm } from "@/components/shared/EnquiryForm";
 import { ScheduleVisitForm } from "@/components/shared/ScheduleVisitForm";
+import { LegalChecklist } from "@/components/shared/LegalChecklist";
 import { ComparisonDrawer } from "@/components/shared/ComparisonDrawer";
 import { useComparison } from "@/hooks/useComparison";
 import { getPropertyById, getSimilarProperties } from "@/data/mock-properties";
@@ -292,6 +293,8 @@ export default function PropertyDetails() {
                 </p>
               </div>
             </div>
+
+            <LegalChecklist />
 
             {similarProperties.length > 0 && (
               <div className="pt-6 border-t space-y-4">
