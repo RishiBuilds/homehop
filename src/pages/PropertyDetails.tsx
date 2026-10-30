@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   ArrowLeft,
@@ -28,6 +28,10 @@ import { EnquiryForm } from "@/components/shared/EnquiryForm";
 import { ScheduleVisitForm } from "@/components/shared/ScheduleVisitForm";
 import { LegalChecklist } from "@/components/shared/LegalChecklist";
 import { ComparisonDrawer } from "@/components/shared/ComparisonDrawer";
+
+const ApproximateMiniMap = lazy(() =>
+  import("@/components/shared/ApproximateMiniMap").then((m) => ({ default: m.ApproximateMiniMap }))
+);
 import { useComparison } from "@/hooks/useComparison";
 import { getPropertyById, getSimilarProperties } from "@/data/mock-properties";
 import {
@@ -295,6 +299,16 @@ export default function PropertyDetails() {
             </div>
 
             <LegalChecklist />
+
+            <Suspense
+              fallback={
+                <div className="h-56 rounded-xl border bg-muted/20 animate-pulse flex items-center justify-center text-xs text-muted-foreground">
+                  Loading approximate locality map...
+                </div>
+              }
+            >
+              <ApproximateMiniMap property={property} />
+            </Suspense>
 
             {similarProperties.length > 0 && (
               <div className="pt-6 border-t space-y-4">
