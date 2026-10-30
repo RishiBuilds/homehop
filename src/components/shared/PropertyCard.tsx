@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { SampleBadge } from "./SampleBadge";
 import { TransitDistanceBadge } from "./TransitDistanceBadge";
 import { useFavorites } from "@/hooks/useFavorites";
+import { useComparison } from "@/hooks/useComparison";
 import type { Property } from "@/types";
 import { PROPERTY_TYPE_LABELS, AVAILABILITY_LABELS } from "@/types";
 import { formatCurrency, computeUpfrontCost } from "@/lib/utils";
@@ -16,7 +17,9 @@ interface PropertyCardProps {
 
 export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { isInComparison, toggleComparison } = useComparison();
   const favorite = isFavorite(property.id);
+  const inComparison = isInComparison(property.id);
   const upfrontCost = computeUpfrontCost(property.rent, property.deposit, property.brokerage);
 
   if (viewMode === "list") {
@@ -107,9 +110,26 @@ export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps)
                   <span>Brokerage: <strong className="text-foreground">{property.brokerage > 0 ? formatCurrency(property.brokerage) : "Nil"}</strong></span>
                   <span>Total Upfront: <strong className="text-primary">{formatCurrency(upfrontCost)}</strong></span>
                 </div>
-                <div className="flex items-center gap-1 text-primary font-medium group-hover:translate-x-0.5 transition-transform">
-                  <span>View Details</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleComparison(property.id);
+                    }}
+                    className={`text-[11px] px-2.5 py-1 rounded border transition-colors ${
+                      inComparison
+                        ? "bg-primary text-primary-foreground border-primary font-semibold"
+                        : "bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"
+                    }`}
+                  >
+                    {inComparison ? "Comparing ✓" : "+ Compare"}
+                  </button>
+                  <div className="flex items-center gap-1 text-primary font-medium group-hover:translate-x-0.5 transition-transform">
+                    <span>View Details</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </div>
                 </div>
               </div>
             </CardContent>
@@ -217,10 +237,21 @@ export function PropertyCard({ property, viewMode = "grid" }: PropertyCardProps)
         </div>
 
         <div className="px-4 pb-3 pt-0 flex items-center justify-between text-[11px] text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <Calendar className="h-3 w-3" />
-            Confirmed: {property.lastConfirmedDate}
-          </span>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              toggleComparison(property.id);
+            }}
+            className={`text-[10px] px-2 py-0.5 rounded border transition-colors ${
+              inComparison
+                ? "bg-primary text-primary-foreground border-primary font-semibold"
+                : "bg-card text-muted-foreground hover:text-foreground hover:border-primary/40"
+            }`}
+          >
+            {inComparison ? "Comparing ✓" : "+ Compare"}
+          </button>
           <span className="text-primary font-medium group-hover:underline flex items-center gap-0.5">
             Details →
           </span>
