@@ -24,3 +24,4 @@ export function exportPropertiesToText(properties: Property[]): string {
 
   return lines.join("\n");
 }
+

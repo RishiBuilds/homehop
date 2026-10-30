@@ -39,3 +39,4 @@ export function TransitDistanceBadge({ station, className = "" }: TransitDistanc
     </span>
   );
 }
+
